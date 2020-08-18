@@ -12,6 +12,8 @@ app.use((req,res,next)=>{
 });
 
 app.use(express.static('public'));
+app.use(express.json());
+app.use(cors());
 
 nativeObject = YAML.load('database.yml',(database)=>{
 	
@@ -264,9 +266,19 @@ nativeObject = YAML.load('database.yml',(database)=>{
 
     });
 
+    app.post('/users/auth', (req, res)=> {
+        const {body} = req;
+        
+        if(body.username === 'test' && body.password === 'test' ) {
+            return  res.status(200).json({ token: 'admin'});
+        }
+            res.status(404).json({message: 'not found'});
+        
+        
+    })
     app.listen(port,()=>{
-        console.log(`Redux Saga Cart backend server is listening on ${port}`)
+        console.log(`Cart backend server is listening on ${port}`)
     });
 });
-app.use(cors());
+
 
