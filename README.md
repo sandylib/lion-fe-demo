@@ -16,7 +16,7 @@ finally, you could run `npm start` or `yarn start`  start the react application
 
 ### run `npm test` then following by `type a` run  some unit tests
 
-## there is only one testing account, below account pass the login, otherwise will redirect to not found page (not stying)
+There is only one testing account (detail below), otherwise it will be redirected to the not-found page (not stying)
 
 Username: test
 Password: test
