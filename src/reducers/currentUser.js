@@ -44,6 +44,13 @@ export const currentUser = (state = initialState, action)=> {
       }
     }
 
+    case CONSTANTS.UPDATE_ALL_ITEMS_DECREASE_QUANTITY: {
+      return {
+        ...state,
+        totalQuantity: state.totalQuantity -1
+      }
+    }
+
     case CONSTANTS.INPROGRESS: {
       return {
         ...state,

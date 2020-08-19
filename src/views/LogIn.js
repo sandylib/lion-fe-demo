@@ -81,7 +81,10 @@ class LogIn extends Component {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-         Login
+         Login 
+        </Typography>
+        <Typography   variant="colorPrimary" gutterBottom>
+          username: test password: test 
         </Typography>
         <form className={classes.form} noValidate>
           <Wrapper>

@@ -8,6 +8,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import Add from '@material-ui/icons/Add';
+import Minimize from '@material-ui/icons/Remove';
+import { updateAllItemsRemove, updateAllItems } from '../actions/userActions';
 import {  MainWrapper } from '../utils/multiHelp';
 import { getCurrentUser, getAllItems } from '../actions/userActions'
 import {Loading} from '../components/Loading/Loading';
@@ -31,7 +35,7 @@ function subtotal(items) {
 
 export default function MyCart() {
   const classes = useStyles();
-
+  
   const items = useSelector(state => state.items);
   const getPriceById = (id) => {
     const item = items.find(item => item.id === id)
@@ -39,14 +43,20 @@ export default function MyCart() {
   }
   const currentUser = useSelector(state => state.currentUser);
   const {cart} = currentUser;
- 
+  const {totalQuantity} = currentUser;
+  const removeItem = (id) => {
+    dispatch(updateAllItemsRemove(id))
+  }
+  const addItem = (id) => {
+    dispatch(updateAllItems({id}))
+  }
 
   const dispatch = useDispatch();
 
   useEffect(()=> {
     dispatch(getCurrentUser({id: 'U10000'}))
     dispatch(getAllItems());
-  }, [])
+  }, [totalQuantity])
 
   if(cart.length === 0 || currentUser.inprogress) {
     return <Loading />;
@@ -65,7 +75,7 @@ export default function MyCart() {
           </TableRow>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell align="right">Qty.</TableCell>
+            <TableCell align="center">Qty.</TableCell>
             <TableCell align="right">Unit Price</TableCell>
             <TableCell align="right">Sum</TableCell>
           </TableRow>
@@ -74,7 +84,15 @@ export default function MyCart() {
           {cart && cart.length > 0 && cart.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.name}</TableCell>
-              <TableCell align="right">{row.quantity}</TableCell>
+              <TableCell align="right">
+              <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => addItem(row.id)}>
+                <Add />
+              </IconButton>
+                {row.quantity}
+                <IconButton color="primary" aria-label="upload picture" component="span" onClick={() => removeItem(row.id)}>
+                <Minimize />
+              </IconButton>
+                </TableCell>
               <TableCell align="right">{ccyFormat(row.usd)}</TableCell>
               <TableCell align="right">{ccyFormat( row.usd * row.quantity)}</TableCell>
             </TableRow>
@@ -97,6 +115,7 @@ export default function MyCart() {
         </TableBody>
       </Table>
     </TableContainer>
+    
     </MainWrapper>
   );
 }

@@ -50,7 +50,7 @@ export default function AppTopBar() {
           <Typography variant="h6" className={classes.title}>
             Dashbord
           </Typography>
-          {visible && <IconButton aria-label="show 17 new notifications" color="inherit" onClick={onClick}>
+          {visible && <IconButton aria-label="show notifications" color="inherit" onClick={onClick}>
               <Badge badgeContent={totalQuantity} color="secondary">
                 <ShoppingCart />
               </Badge>
