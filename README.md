@@ -12,11 +12,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - finally, you could run `npm start` or `yarn start`  start the react application
 
-## Be avail of this is not following TDD, the unit test just for demo purpose
+## Be aware that this did not follow TDD, the unit tests are just for demo skillability purpose
 
-### run `npm test` then following by `type a` run  some unit tests
+### run `npm test` then  `type a` will run  all of written unit tests
 
-There is only one testing account (detail below), otherwise it will be redirected to the not-found page (not stying)
+## There is only one testing account (detail below), otherwise it will be redirected to the not-found page (not stying)
 
 Username: test
 Password: test
