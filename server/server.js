@@ -120,7 +120,7 @@ nativeObject = YAML.load('database.yml',(database)=>{
 				validated = false;
 				error = "There is an insufficient quantity of " + id;
 			}
-		});;
+		});
 		res
 			.status(200)
 			.json({validated,error});
@@ -129,10 +129,17 @@ nativeObject = YAML.load('database.yml',(database)=>{
 	
 	
 	app.get("/cart/:owner",(req,res)=>{
-		const cart = req.cart;
-		res
-			.status(200)
-			.json(cart);
+        const { owner } = req.params;
+        const cart = database.carts.find(cart=>cart.owner === owner);
+        const {items} = cart;
+        const updates = [];
+        items.forEach( ({id, quantity}) => {
+            const item = database.items.find(item => item.id === id);
+            const usd = item.usd;
+            const name = item.name;
+            updates.push({id, quantity, usd, name})
+        })
+		res.status(200).json({owner: cart.owner, items: updates});
 		
 	});
 	
@@ -180,7 +187,9 @@ nativeObject = YAML.load('database.yml',(database)=>{
 	});
 	
 
-    
+    app.get('/items', (req, res)=> {
+        res.status(200).json(database.items);
+    });
 
     app.get("/items/:ids",(req,res)=>{
         const ids = req.params.ids.split(',');

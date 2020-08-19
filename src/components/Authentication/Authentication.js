@@ -27,9 +27,7 @@ export class AuthenticationManger extends React.Component {
         method: 'POST', 
         body: JSON.stringify({username, password})
       };
-      debugger;
       const data = await request(authUrl, options);
-      debugger;
       const token = data.token;
       const permissions = unpackPermissions(token);
       this.setState({
