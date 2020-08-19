@@ -2,27 +2,24 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+###  Must Running server first (this is mock api for react front end using)
 
-## Install packages for the mock server
+first run `npm install` inside server folder (this is mock backend, so I don't like the libary install react app projects, this whole folder could remove totally when there is backend api ready)
 
-### run 2 command `cd server` then `npm install`
+second, run `npm install` inside the root of this project, this install client need libarary
 
-### Install the client/React App packages 
+third, run `npm run dev` this will start the mock api server in `localhost:8081`
 
-### make sure you are in the root of this project run `npm install`
+finally, you could run `npm start` or `yarn start`  start the react application
 
-## Now you should be able to start the React Project in the root of this project run below command
+## Be avail of this is not following TDD, the unit test just for demo purpose
 
-### `yarn start`
+### run `npm test` then following by `type a` run  some unit tests
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## there is only one testing account, below account pass the login, otherwise will redirect to not found page (not stying)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test` for testing client components
-
+Username: test
+Password: test
 
 
 
