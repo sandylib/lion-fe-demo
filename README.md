@@ -21,7 +21,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Username: test
 Password: test
 
-
+the backend did in purpose will random delay, make sure could visible the spinning and changes 
 
 
 
